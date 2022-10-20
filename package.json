@@ -4,7 +4,9 @@
   "description": "a bookstore website for nbbs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "set NODE_ENV=DEVELOPMENT && nodemon index",
+    "prod": "set NODE_ENV=PRODUCTION && nodemon index"
   },
   "repository": {
     "type": "git",
@@ -19,7 +21,9 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^6.6.5",
+    "mongoose": "^6.6.5"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.20"
   }
 }
