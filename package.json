@@ -7,7 +7,7 @@
     "start": "nodemon index.js",
     "dev": "set NODE_ENV=DEVELOPMENT && nodemon index",
     "prod": "set NODE_ENV=PRODUCTION && nodemon index",
-    "seeder" : "node ./utils/seeder"
+    "seeder": "node ./utils/seeder"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/flex-akin/e-commerce-NBBS#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^6.6.5"

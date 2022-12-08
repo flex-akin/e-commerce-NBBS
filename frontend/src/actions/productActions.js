@@ -14,7 +14,7 @@ export const getProducts = () => async (dispatch) => {
             type : ALL_PRODUCTS_REQUEST
         })  
 
-        const {data} = await axios.get('api/v1/products')
+        const {data} = await axios.get('http://143.198.145.0:5510/api/v1/products')
         
         dispatch({
             type : ALL_PRODUCTS_SUCCESS,
