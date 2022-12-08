@@ -4,9 +4,10 @@
   "description": "a bookstore website for nbbs",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "dev": "set NODE_ENV=DEVELOPMENT && nodemon index",
-    "prod": "set NODE_ENV=PRODUCTION && nodemon index"
+    "prod": "set NODE_ENV=PRODUCTION && nodemon index",
+    "seeder" : "node ./utils/seeder"
   },
   "repository": {
     "type": "git",
