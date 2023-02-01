@@ -8,6 +8,7 @@ import { productsReducer, newProductReducer, productReducer, productDetailsReduc
 
 const reducer = combineReducers({
     products: productsReducer,
+    productDetails : productDetailsReducer
  
 })
 
