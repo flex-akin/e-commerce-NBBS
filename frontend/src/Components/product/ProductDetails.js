@@ -88,7 +88,7 @@ const ProductDetails = () => {
             <button id="review_btn" type="button" className="btn btn-primary mt-4" data-toggle="modal" data-target="#ratingModal">
                         Submit Your Review
             </button>
-            <<p>payments should be made to:</p>
+            <p>payments should be made to:</p>
             <H2>
                 <P>ZENITH BANK</P>
                 <p>NIEGRIA BAPTIST BOOKSTORE</p>
