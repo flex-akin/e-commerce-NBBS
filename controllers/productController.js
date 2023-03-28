@@ -18,25 +18,30 @@ exports.newProduct = async (req, res, next) => {
 // get products from database
 exports.getProducts = catchAsyncErrors( async (req, res, next ) => {
 
-    const  resPerPage = 10
-    const productCount = await Product.countDocuments()
+    const  resPerPage = 16
+    const productsCount = await Product.countDocuments()
 
     const apiFeatures = new APIFeatures(Product.find(), req.query)
             .search()
             .filter()
-            .pagination(resPerPage)
 
-    const products = await apiFeatures.query;
+    let products = await apiFeatures.query;
+    let filteredProductscount = products.length;       
+    apiFeatures.pagination(resPerPage)
 
-    setTimeout(() => { 
+    products = await apiFeatures.query.clone();
+
+
         res.status(200).json({
             success: true,
             message: "all products found",
             count: products.length,
-            productCount,
+            productsCount,
+            filteredProductscount,
+            resPerPage,
             products
         })
-     }, 2000);
+
    
 })
 // get single product

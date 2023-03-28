@@ -7,7 +7,7 @@ import Metadata from '../Layouts/Metadata'
 import { useParams  } from 'react-router-dom'
 
 
-const ProductDetails = ({ match}) => {
+const ProductDetails = () => {
     const urlParams = useParams()
 
     const alert = useAlert()
@@ -32,8 +32,13 @@ const ProductDetails = ({ match}) => {
     {loading ? <Loader /> : (
         <Fragment>
         <div className="row f-flex justify-content-around">
-        <div className="col-12 col-lg-5 img-fluid" id="product_image">
-            <img src="https://i5.walmartimages.com/asr/1223a935-2a61-480a-95a1-21904ff8986c_1.17fa3d7870e3d9b1248da7b1144787f5.jpeg?odnWidth=undefined&odnHeight=undefined&odnBg=ffffff" alt="sdf" height="500" width="500" />
+        <div className="col-12 col-lg-3" id="product_image">
+         
+            <img src="https://res.cloudinary.com/ddaoml7e8/image/upload/v1669887512/nbbs/76b.jpg" alt="sdf" height="400" width="300" />
+        </div>
+        <div className="col-12 col-lg-3 " id="product_image">
+         
+            <img src="https://res.cloudinary.com/ddaoml7e8/image/upload/v1669887506/nbbs/76.jpg" alt="sdf" height="400" width="300" />
         </div>
     
         <div className="col-12 col-lg-5 mt-5">
@@ -83,6 +88,12 @@ const ProductDetails = ({ match}) => {
             <button id="review_btn" type="button" className="btn btn-primary mt-4" data-toggle="modal" data-target="#ratingModal">
                         Submit Your Review
             </button>
+            <<p>payments should be made to:</p>
+            <H2>
+                <P>ZENITH BANK</P>
+                <p>NIEGRIA BAPTIST BOOKSTORE</p>
+                <P>1010642637</P>
+            </H2>
             
             <div className="row mt-2 mb-5">
                 <div className="rating w-50">

@@ -3,6 +3,7 @@ const app = express()
 const dotenv = require('dotenv')
 const connectDatabase = require('./config/database')
 const cors = require("cors");
+const cookieParser = require('cookie-parser')
 app.use(cors());
 
 // Handle Uncaught exceptions
@@ -15,14 +16,19 @@ process.on('uncaughtException', err => {
 
 const errorMiddleware = require('./middlewares/errors')
 app.use(express.json());
+app.use(cookieParser())
 
 dotenv.config()
 const port = process.env.PORT
 
 
 // import all routes
-const products = require("./routes/product")
+const products = require("./routes/auth")
 app.use("/api/v1", products)
+
+
+const auth = require("./routes/product")
+app.use("/api/v1", auth)
 
 //Middelware to Handle Errors
 app.use(errorMiddleware)

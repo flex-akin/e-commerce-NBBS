@@ -3,8 +3,9 @@ const router = express.Router()
 
 const { getProducts, newProduct, getSingleProducts, updateProduct, deleteProduct } = require('../controllers/productController')
 
+const { isAuthenticatedUser, authorizeRoles} = require('../middlewares/auth')
 // get request parameters
-router.route("/products").get(getProducts);
+router.route("/products").get( getProducts);
 router.route("/products/:id").get(getSingleProducts);
 router.route("/admin/products/:id")
                 .put(updateProduct)
