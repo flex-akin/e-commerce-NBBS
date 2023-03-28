@@ -50,7 +50,7 @@ export const login = (email, password) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post('http://127.0.0.1:5510/api/v1/login', { email, password }, config)
+        const { data } = await axios.post('https://api.nigeriabaptistbookstore.com/api/v1/login', { email, password }, config)
 
         dispatch({
             type: LOGIN_SUCCESS,
@@ -86,7 +86,7 @@ export const register = (name, password, email, phoneNumber, state, address) => 
             }
         }
 
-        const { data } = await axios.post('http://127.0.0.1:5510/api/v1/register', {name, password, email, phoneNumber, state, address}, config)
+        const { data } = await axios.post('https://api.nigeriabaptistbookstore.com/api/v1/register', {name, password, email, phoneNumber, state, address}, config)
 
         dispatch({
             type: REGISTER_USER_SUCCESS,
@@ -107,7 +107,7 @@ export const loadUser = () => async (dispatch) => {
 
         dispatch({ type: LOAD_USER_REQUEST })
 
-        const { data } = await axios.get('/api/v1/me')
+        const { data } = await axios.get('https://api.nigeriabaptistbookstore.com/api/v1/me')
 
         dispatch({
             type: LOAD_USER_SUCCESS,

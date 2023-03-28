@@ -17,7 +17,7 @@ export const getProducts = (keyword ='', currentPage = 1) => async (dispatch) =>
             type : ALL_PRODUCTS_REQUEST
         })  
 
-        const {data} = await axios.get(`http://127.0.0.1:5510/api/v1/products?keyword=${keyword}&page=${currentPage}`)
+        const {data} = await axios.get(`https://api.nigeriabaptistbookstore.com/api/v1/products?keyword=${keyword}&page=${currentPage}`)
         
         dispatch({
             type : ALL_PRODUCTS_SUCCESS,
@@ -43,7 +43,7 @@ export const getProductDetails = (id) => async (dispatch) => {
         console.log('id', id)
 
 
-        const { data } = await axios.get(`http://127.0.0.1:5510/api/v1/products/${id}`)
+        const { data } = await axios.get(`https://api.nigeriabaptistbookstore.com/api/v1/products/${id}`)
 
 
         dispatch({
