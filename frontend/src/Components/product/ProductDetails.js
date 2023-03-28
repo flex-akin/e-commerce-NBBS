@@ -89,11 +89,11 @@ const ProductDetails = () => {
                         Submit Your Review
             </button>
             <p>payments should be made to:</p>
-            <H2>
-                <P>ZENITH BANK</P>
+            <h2>
+                <p>ZENITH BANK</p>
                 <p>NIEGRIA BAPTIST BOOKSTORE</p>
-                <P>1010642637</P>
-            </H2>
+                <p>1010642637</p>
+            </h2>
             
             <div className="row mt-2 mb-5">
                 <div className="rating w-50">
