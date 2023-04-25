@@ -6,6 +6,8 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import ProductDetails from './Components/product/ProductDetails';
 import Login from './Components/user/Login';
 import Register from './Components/user/Register';
+import Profile from './Components/user/Profile';
+import ProtectedRoute from './Components/Route/ProtectedRoute';
 import {loadUser} from './actions/userActions'
 import store from './store'
 
@@ -23,8 +25,13 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/search/:keyword" element={<Home />} />
             <Route path="/product/:id" element={<ProductDetails />} />
+            
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route exact path='/' element={<ProtectedRoute/>}>
+            <Route exact path='/me' element={<Profile />} />
+          </Route>
+
 
 
           </Routes>

@@ -46,10 +46,13 @@ if(keyword) {
       {loading ? <Loader />: (
         <Fragment>
           <Metadata title={"Best Christain Books Shopping"} />
+          <div className="jumbotron jumbotron-fluid">
 
-<h1 id="products_heading">Latest Products</h1>
+</div>
+<h4 id="products_heading">Available Products</h4>
+<hr />
 
-<section id="products" className="container mt-5">
+<section id="products" className="container-fluid mt-5">
 <div className="row">
 {products && products.map(product => (
   <Product key={product._id} product={product} />

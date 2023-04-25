@@ -5,9 +5,39 @@ import { useAlert } from 'react-alert'
 import Loader from '../Layouts/Loader'
 import Metadata from '../Layouts/Metadata'
 import { useParams  } from 'react-router-dom'
+import {Cloudinary} from "@cloudinary/url-gen";
+import {AdvancedImage} from '@cloudinary/react';
+
+// Import required actions and qualifiers.
+import {thumbnail} from "@cloudinary/url-gen/actions/resize";
+
+
 
 
 const ProductDetails = () => {
+
+    const convert = (number) => {
+        if (!number){
+          return 0
+        }
+        else {
+          return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    
+        }
+    
+      }
+    
+     
+
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'ddaoml7e8'
+    }
+  });
+
+
+  
+    
     const urlParams = useParams()
 
     const alert = useAlert()
@@ -27,18 +57,30 @@ const ProductDetails = () => {
 
     }, [dispatch, alert, error, urlParams.id])
 
+    const myImage = cld.image(`nbbs/${products.frontPic}`)
+    const myImageOne = cld.image(`nbbs/${products.backPic}`)
+
+
+    myImage
+    .resize(thumbnail().width(300).height(500))  
+    
+
+    myImageOne
+    .resize(thumbnail().width(300).height(500))  
+    
+
   return (
 <Fragment>
     {loading ? <Loader /> : (
         <Fragment>
         <div className="row f-flex justify-content-around">
         <div className="col-12 col-lg-3" id="product_image">
+<AdvancedImage className=".card-img-top" cldImg={myImage} />
          
-            <img src="https://res.cloudinary.com/ddaoml7e8/image/upload/v1669887512/nbbs/76b.jpg" alt="sdf" height="400" width="300" />
         </div>
         <div className="col-12 col-lg-3 " id="product_image">
+<AdvancedImage className=".card-img-top" cldImg={myImageOne} />
          
-            <img src="https://res.cloudinary.com/ddaoml7e8/image/upload/v1669887506/nbbs/76.jpg" alt="sdf" height="400" width="300" />
         </div>
     
         <div className="col-12 col-lg-5 mt-5">
@@ -54,7 +96,7 @@ const ProductDetails = () => {
     
             <hr />
     
-            <p id="product_price">₦{products.price}</p>
+            <p id="product_price">₦{convert(products.price)}</p>
             <div className="stockCounter d-inline">
                 <span className="btn btn-danger minus">-</span>
     
@@ -81,19 +123,21 @@ const ProductDetails = () => {
             <hr />
     
             <h4 className="mt-2">Description:</h4>
-            <p> This book tiltled {products.name} was writtedn by {products.author}</p>
+            <p> This book tiltled {products.name} was written by {products.author}</p>
             <hr />
             <p id="product_seller mb-3">Author: <strong>{products.author}</strong></p>
             
             <button id="review_btn" type="button" className="btn btn-primary mt-4" data-toggle="modal" data-target="#ratingModal">
                         Submit Your Review
             </button>
-            <p>payments should be made to:</p>
-            <h2>
+
+            <br/>
+            <p>PAYMENT SHOULD BE MADE TO:</p>
+            <h3>
                 <p>ZENITH BANK</p>
                 <p>NIEGRIA BAPTIST BOOKSTORE</p>
                 <p>1010642637</p>
-            </h2>
+            </h3>
             
             <div className="row mt-2 mb-5">
                 <div className="rating w-50">

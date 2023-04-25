@@ -23,13 +23,15 @@ const port = process.env.PORT
 
 
 // import all routes
-const products = require("./routes/auth")
-app.use("/api/v1", products)
-
-
-const auth = require("./routes/product")
+const auth = require("./routes/auth")
 app.use("/api/v1", auth)
 
+
+const products = require("./routes/product")
+app.use("/api/v1", products)
+
+const order = require("./routes/order")
+app.use("/api/v1", order)
 //Middelware to Handle Errors
 app.use(errorMiddleware)
 

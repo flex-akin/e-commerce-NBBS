@@ -33,6 +33,10 @@ module.exports = (err, req, res, next) => {
             error = new ErrorHandler(message, 400)
         }
 
+        if (err.name === 'tokenExpiredError') {
+            const message = 'JSON Web Token is invalid. Try Again!!!'
+            error = new ErrorHandler(message, 400)
+        }
 
         // Handling Mongoose Validation Error
         if (err.name === 'ValidationError') {

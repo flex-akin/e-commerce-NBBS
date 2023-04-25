@@ -49,8 +49,9 @@ export const login = (email, password) => async (dispatch) => {
                 'Content-Type': 'application/json'
             }
         }
+        
 
-        const { data } = await axios.post('https://api.nigeriabaptistbookstore.com/api/v1/login', { email, password }, config)
+        const { data } = await axios.post('http://127.0.0.1:5510/api/v1/login', { email, password }, config)
 
         dispatch({
             type: LOGIN_SUCCESS,
@@ -58,10 +59,10 @@ export const login = (email, password) => async (dispatch) => {
         })
 
     } catch (error) {
-        
+        console.log("error", error)
         dispatch({
             type: LOGIN_FAIL,
-            payload: error.response.data.message
+            payload: error.response.data.errMessage
         })
     }
 }
@@ -86,7 +87,7 @@ export const register = (name, password, email, phoneNumber, state, address) => 
             }
         }
 
-        const { data } = await axios.post('https://api.nigeriabaptistbookstore.com/api/v1/register', {name, password, email, phoneNumber, state, address}, config)
+        const { data } = await axios.post('http://127.0.0.1:5510/api/v1/register', {name, password, email, phoneNumber, state, address}, config)
 
         dispatch({
             type: REGISTER_USER_SUCCESS,
@@ -97,7 +98,7 @@ export const register = (name, password, email, phoneNumber, state, address) => 
         console.log(error)
         dispatch({
             type: REGISTER_USER_FAIL,
-            payload: error.response.data.message
+            payload: error.response.data.errMessage
         })
     }
 }
@@ -107,7 +108,7 @@ export const loadUser = () => async (dispatch) => {
 
         dispatch({ type: LOAD_USER_REQUEST })
 
-        const { data } = await axios.get('https://api.nigeriabaptistbookstore.com/api/v1/me')
+        const { data } = await axios.get('http://127.0.0.1:5510/api/v1/me')
 
         dispatch({
             type: LOAD_USER_SUCCESS,
@@ -117,6 +118,23 @@ export const loadUser = () => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: LOAD_USER_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+
+export const logout = () => async (dispatch) => {
+    try {
+
+        await axios.get('http://127.0.0.1:5510/api/v1/logout')
+
+        dispatch({
+            type: LOGOUT_SUCCESS,
+        })
+
+    } catch (error) {
+        dispatch({
+            type: LOGOUT_FAIL,
             payload: error.response.data.message
         })
     }
